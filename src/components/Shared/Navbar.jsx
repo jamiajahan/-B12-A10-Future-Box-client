@@ -1,12 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth"; // Import your auth hook
 import toast from "react-hot-toast";
-
-// Import a placeholder logo (replace with your actual logo.png)
+import { useContext } from "react";
+import { ThemeContext } from "../../providers/ThemeProvider";
 import logo from "../../assets/react.svg"; 
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const handleLogout = () => {
     logOut()
@@ -75,6 +76,22 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
+
+        {/* !! 4. ADD THE TOGGLE SWITCH !! */}
+        <label className="swap swap-rotate mr-4">
+          <input 
+            type="checkbox"
+            onChange={toggleTheme}
+            checked={theme === "dark"}
+            className="theme-controller"
+          />
+          {/* sun icon */}
+          <svg className="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M5.64,17l-1.42,1.42a1,1,0,0,0,1.42,1.42L7.05,18.42A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05A1,1,0,0,0,7.05,5.64L5.64,4.22A1,1,0,0,0,4.22,5.64Zm12.73,1.42L17,5.64a1,1,0,0,0-1.42,1.42l1.42,1.42a1,1,0,0,0,1.42-1.42ZM17,12a1,1,0,0,0-1-1H15a1,1,0,0,0,0,2h1A1,1,0,0,0,17,12Zm-1.42,5.64a1,1,0,0,0-1.42,1.42l1.42,1.42a1,1,0,0,0,1.42-1.42ZM12,7a5,5,0,1,0,5,5A5,5,0,0,0,12,7Zm0,8a3,3,0,1,1,3-3A3,3,0,0,1,12,15Z"/></svg>
+          {/* moon icon */}
+          <svg className="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21.64,13a1,1,0,0,0-1.05-.14,13.05,13.05,0,0,1-4.21.56,12.06,12.06,0,0,1-7.72-2.1A12.8,12.8,0,0,1,3.28,10.15a1,1,0,0,0-.39-1,1,1,0,0,0-.8.21,12.06,12.06,0,0,0-2.1,7.72A12.06,12.06,0,0,0,12,24a12.06,12.06,0,0,0,7.72-2.1,1,1,0,0,0,.21-.8A12.8,12.8,0,0,1,13,21.64,1,1,0,0,0,13,21.64Z"/></svg>
+        </label>
+        {/* --------------------- */}
+        
         {user ? (
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

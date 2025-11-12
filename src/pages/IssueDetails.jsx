@@ -45,6 +45,7 @@ const IssueDetails = () => {
     const newContribution = {
       issueId: id, // Link to this issue
       issueTitle: issue.title,
+      category: issue.category,
       amount,
       name,
       email: user.email, // Logged in user email

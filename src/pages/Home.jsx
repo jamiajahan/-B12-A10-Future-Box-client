@@ -1,9 +1,8 @@
 import Banner from "../components/Home/Banner";
 import Categories from "../components/Home/Categories";
-// !! UNCOMMENT THE LINE BELOW !!
+import CommunityStats from "../components/Home/CommunityStats"; 
+import VolunteerCTA from "../components/Home/VolunteerCTA";
 import RecentComplaints from "../components/Home/RecentComplaints";
-// import CommunityStats from "../components/Home/CommunityStats";
-// import VolunteerCTA from "../components/Home/VolunteerCTA";
 
 const Home = () => {
   return (
@@ -15,12 +14,14 @@ const Home = () => {
       <Categories />
 
       {/* Recent Complaints Section */}
-      {/* !! UNCOMMENT THE LINE BELOW !! */}
       <RecentComplaints />
+      
+      {/* Community Stats Section  */}
+      <CommunityStats />
 
-      {/* Extra Sections (Coming next) */}
-      {/* <CommunityStats /> */}
-      {/* <VolunteerCTA /> */}
+      {/* Volunteer Call-to-Action Section  */}
+      <VolunteerCTA />
+
     </div>
   );
 };
